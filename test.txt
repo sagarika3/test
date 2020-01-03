@@ -1,0 +1,37 @@
+@isTest
+private class Test_DEVC_LeadDetail {
+    private static testMethod void ConverLead(){
+        Lead LeadTest= new Lead(firstname='Sagar',lastname='achar',company='slk', status='Contacted',email='sagarikaachar2@gmail.com');
+        insert LeadTest;
+        ApexPages.StandardController sc=new ApexPages.StandardController(LeadTest);
+        PageReference pageRef=page.LeadCoversion_spin; //vf page name
+        pageRef.getParameters().put('id',String.valueOf(LeadTest.Id));
+        Test.setCurrentpage(pageRef);
+        
+        DEVC_LeadDetail test1=new DEVC_LeadDetail(sc);
+        DEVC_LeadDetail test2=new DEVC_LeadDetail();
+        
+        test1.mwrapper=new DEVC_LeadDetail.DEVC_ModalWrapper();
+        test1.mwrapper.accSite='slkgroup.com';
+        test1.mwrapper.conEmail='xyz@gmail.com';
+        test1.mwrapper.oppClosedDate=Date.today()+30;
+        test1.mwrapper.selectedStage='Pospecting';
+        test1.mwrapper.oppName='testopp';
+        test1.initMethod();
+        
+        
+        
+        
+        test2.mwrapper=new DEVC_LeadDetail.DEVC_ModalWrapper();
+        test2.mwrapper.accSite='slkgroup.com';
+        test2.mwrapper.conEmail='xyz@gmail.com';
+        test2.mwrapper.oppClosedDate=Date.today()+30;
+        test2.mwrapper.selectedStage='Pospecting';
+        test2.mwrapper.oppName='testopp';
+        test2.initMethod();
+        
+        
+        
+    }
+    
+}
